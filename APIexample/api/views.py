@@ -1,13 +1,19 @@
 from .models import Article
-from .serializers import ArticleSerializer
+from .serializers import ArticleSerializer, UserSerializer
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.models import User
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
 	serializer_class = ArticleSerializer
 	queryset = Article.objects.all()
 	permission_classes = [IsAuthenticated]
+
+
+class UserViewSet(viewsets.ModelViewSet):
+	queryset = User.objects.all()
+	serializer_class = UserSerializer()
 
 
 '''
