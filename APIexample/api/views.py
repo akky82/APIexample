@@ -1,11 +1,13 @@
 from .models import Article
 from .serializers import ArticleSerializer
 from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
 	serializer_class = ArticleSerializer
 	queryset = Article.objects.all()
+	permission_classes = [IsAuthenticated]
 
 
 '''
